@@ -2,10 +2,7 @@ $(document).ready(function(){
 
     $("form").submit(function(e){
         e.preventDefault();
-
         let numeroDeSuperHero = $("#numeroDeSuperHero").val();
-        alert(numeroDeSuperHero);
-
         $.ajax({
             url: "https://www.superheroapi.com/api.php/10223882662909856/" + numeroDeSuperHero,
             success: function(data) {
@@ -63,9 +60,33 @@ $(document).ready(function(){
                 </div>
                 `)
 
-                $("#grafico").html(`
-                
-                `)
+                let config = {
+                    animationEnabled: true,
+                    title: {
+                        text: `Estadísticas de poder para: ${nombre}`
+                    },
+                    data: [
+                        {
+                            type: 'pie',
+                            sstartAngle: 25,
+                            toolTipContent: "<b>{label}</b>: ({y})",
+                            showInLegend: "true",
+                            legendText: "{label}",
+                            indexLabelFontSize: 16,
+                            indexLabel: "{label} - ({y})",
+                            dataPoints: [
+                                {y: inteligencia, label: "Inteligencia"},
+                                {y: fuerza, label: "Fuerza"},
+                                {y: velocidad, label: "Velocidad"},
+                                {y: durabilidad, label: "Durabilidad"},
+                                {y: poder, label: "Poder"},
+                                {y: combate, label: "Combate"},
+                            ],
+                        },
+                    ],
+                };
+                let chart = new CanvasJS.Chart("grafico", config);
+                chart.render();
                 
             }
         })
