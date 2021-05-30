@@ -6,8 +6,8 @@ $(document).ready(function(){
 
         validacion = /[a-zA-Z]/gim;
 
-        if (numeroDeSuperHero.match(validacion) || numeroDeSuperHero > 731) {
-            alert("Debes Ingresar un Número o un Valor Menor a 732"); 
+        if (numeroDeSuperHero.match(validacion) || numeroDeSuperHero > 732) {
+            alert("Debes Ingresar un Número o un Valor Menor a 733"); 
         } else {
             $.ajax({
                 url: "https://www.superheroapi.com/api.php/10223882662909856/" + numeroDeSuperHero,
